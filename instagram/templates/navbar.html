@@ -4,8 +4,8 @@
         <!-- ICON -->
         <div class="col-md-4">
           <ul class="nav navbar-nav navbar-left">
-            <li> <a style="font-size:30px;color:white"  href="/">
-                <img src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png" style="height:32px; width:auto;"alt=""> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" style="height:32px; width: 100px; color: white;" alt=""> </a></li>
+            <li> <a style="font-size:30px;color: black"  href="/">
+                <img src="https://seeklogo.com/images/I/instagram-logo-E0067A1403-seeklogo.com.png" style="height:32px; width:auto; color: white;"alt=""> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" style="height:32px; width: 100px; color: white;" alt="">  </a></li>
           </ul>
         </div>
         <!-- ICON-END -->
@@ -28,14 +28,14 @@
           <ul style="padding-right: 15px;" class="nav navbar-nav navbar-right">
             <li>
               <a style="font-size:18px;color:white;" class="glyphicon glyphicon-upload "
-                href="{% url 'new_image' user.id %}">Upload</a>
+                href="{% url 'new_image' user.id %}"><i class="far fa-plus-square"></i> Post</a>
             </li>
             <li>
               <a style="font-size:18px;color:white" class="glyphicon glyphicon-user "
-                href="{% url 'profile' user.id %}"><i class="fas fa-user"></i>Profile</a>
+                href="{% url 'profile' user.id %}"><i style="color: white;" class="fas fa-user"></i> Profile</a>
             </li>
             <li>
-              <a style="font-size:18px;color:white" class="glyphicon glyphicon-off " href="/logout">Logout</a>
+              <a style="font-size:18px;color:white" class="glyphicon glyphicon-off " href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
           </ul>
         </div>
@@ -47,7 +47,7 @@
   <br>
   <style>
   #grad {
-    background-image: linear-gradient(to right, #E86BC7,#D26CD0,#D26CD0,#C96CD3,#BC6DDA,#B06EE0,#A26FE5,#966FE9,#8971EF,#8372F1,#7C73F4); 
+    background-image: linear-gradient(to right, #E86BC7,#D26CD0,#D26CD0,#C96CD3,#BC6DDA,#B06EE0,#A26FE5,#966FE9,#8971EF,#8372F1,#7C73F4);  
   } 
   </style>
   
