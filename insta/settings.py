@@ -14,10 +14,16 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
+from decouple import config,Csv
+
+#cloudinary
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,9 +33,33 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-me=_#(7pe33v=uro5rxqo#(c()_e#r2#220!+#w8fe!oxu!%7x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = []
+# development
+if config('MODE')=="dev":
+   DATABASES = {
+       'default': {
+          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'gallery',
+            'USER': 'ephraim',
+            'PASSWORD': '12345678',
+       }
+       
+   }
+# production
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -42,6 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
+    'cloudinary',
     'instagram.apps.InstagramConfig',
 ]
 
@@ -88,6 +119,12 @@ DATABASES = {
     }
 }
 
+# adding config
+cloudinary.config( 
+  cloud_name="dyj4zf5he",
+    api_key="794387149528958",
+    api_secret="67zyolzBTBByXgow9j2OzoKefio",
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -139,6 +176,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Default primary key field type
+#  https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

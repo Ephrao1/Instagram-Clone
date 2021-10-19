@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
     bio = models.CharField(max_length =200)
@@ -83,3 +84,8 @@ class Followers(models.Model):
     follower = models.CharField(max_length=15)
     following = models.CharField(max_length=15)
     
+class photos(models.Model):
+    # title field
+    title = models.CharField(max_length=100)
+    #image field
+    image = CloudinaryField('image')
