@@ -93,3 +93,8 @@ form{
 #h3{
     font-family: 'Pacifico', cursive;
 }
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
