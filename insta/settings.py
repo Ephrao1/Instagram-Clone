@@ -72,10 +72,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
-    'django_registration',
     'cloudinary',
     'instagram.apps.InstagramConfig',
-    'registration'
 ]
 
 MIDDLEWARE = [
