@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'django_registration',
     'cloudinary',
     'instagram.apps.InstagramConfig',
+    'registration'
 ]
 
 MIDDLEWARE = [
